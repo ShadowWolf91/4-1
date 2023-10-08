@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Task5</title>
+</head>
+<body>
+    <div class="container">
+        <label for="firstValue">Первый множитель:</label>
+        <input type="text" class="text" name="first" id="firstValue" />
+        <label for="secondValue">Второй множитель:</label>
+        <input type="text" class="text" name="second" id="secondValue" />
+        <input type="button"
+               class="button"
+               value="Умножить"
+               onclick="multiply()" />
+        <p id="Result">Результат:</p>
+    </div>
+</body>
+<script>
+    function multiply() {
+      let a = document.getElementById('firstValue').value;
+      let b = document.getElementById('secondValue').value;
+      let xhr = new XMLHttpRequest();
+      xhr.open('POST', '/SDS/task5', true);
+      xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+      xhr.onload = function () {
+          document.getElementById('Result').innerHTML = 'Результат: ' + xhr.response;
+      };
+      xhr.send('a=' + a + '&b=' + b);
+    }
+</script>
+</body>
+</html>
