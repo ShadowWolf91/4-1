@@ -67,8 +67,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="1bPage.html" />
     <Content Include="forTask6.html" />
     <Content Include="forTask5.html" />
+    <Content Include="scripts\modernizr-2.8.3.js" />
+    <Content Include="scripts\WebSocket.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -79,6 +82,7 @@
     <Compile Include="SDSHandler3.cs" />
     <Compile Include="SDSHandler2.cs" />
     <Compile Include="SDSHandler1.cs" />
+    <Compile Include="WebSockets7.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
