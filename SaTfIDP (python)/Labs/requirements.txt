@@ -1,0 +1,10 @@
+numpy
+requests
+pytest
+pandas
+seaborn
+matplotlib
+scikit-learn
+statsmodels
+pmdarima
+deap
