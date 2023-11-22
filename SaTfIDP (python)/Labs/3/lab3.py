@@ -72,12 +72,11 @@ X_train[0:5]
  
 from sklearn.metrics import precision_score, recall_score
 from sklearn.metrics import roc_curve
-from sklearn.metrics import roc_auc_score
+from sklearn.metrics import roc_auc_score, accuracy_score
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.svm import SVC
-
 
 def show_roc(model, X_test, y_test):
     y_pred1 = model.predict_proba(X_test)[:, 1]
@@ -98,7 +97,7 @@ def test_accuracy(model):
     model.fit(X_train, y_train)
     y_pred = model.predict(X_test)
     print('Точность на обучающем наборе: {0:0.4f}'.format(model.score(X_train, y_train)))
-    print('Точность на тестовом наборе: {0:0.4f}'.format(model.score(X_test, y_test)))
+    print('Точность на тестовом наборе (Accuracy): {0:0.4f}'.format(model.score(X_test, y_test)))
     print('Precision: ', format(precision_score(y_test, y_pred, pos_label='>50K')))
     print('Recall: ', format(recall_score(y_test, y_pred, pos_label='>50K')))
     show_roc(model, X_test, y_test)
@@ -116,7 +115,16 @@ print('DecisionTreeClassifier')
 y_pred = test_accuracy(DecisionTreeClassifier())
 
 print('RandomForestClassifier')
-y_pred = test_accuracy(RandomForestClassifier()) 
+y_pred = test_accuracy(RandomForestClassifier())
+
+print('SVC')
+svc = SVC()
+svc.fit(X_train, y_train)
+y_pred = svc.predict(X_test)
+print('Точность на обучающем наборе: {0:0.4f}'.format(svc.score(X_train, y_train)))
+print('Точность на тестовом наборе (Accuracy): {0:0.4f}'.format(svc.score(X_test, y_test)))
+print('Precision: ', format(precision_score(y_test, y_pred, pos_label='>50K')))
+print('Recall: ', format(recall_score(y_test, y_pred, pos_label='>50K')))
 
 #**Bernoulli без RobustScaler**
 #Точность на обучающем наборе: 0.7946
@@ -125,18 +133,11 @@ y_pred = test_accuracy(RandomForestClassifier())
 #**RandomForestClassifier**
 #Точность на обучающем наборе: 1.0000
 #Точность на тестовом наборе: 0.8526
-
-
-# 
-# print('SVC')
-# y_pred = test_accuracy((SVC(kernel='linear',probability=True)))
-
 # 
 y_value_counts = y_test.value_counts()
 y_value_counts
 
 # Null Accuracy - проверка точности с угадыванием самого частовстречаемого класса. Если точность ниже null accuracy, то выбранная модель бесполезна
-
 
 # 
 null_accuracy = (y_value_counts[0] / (y_value_counts[0] + y_value_counts[1]))
@@ -163,6 +164,9 @@ grid_search(DecisionTreeClassifier(), {'max_depth': np.arange(1, 16, 5), 'max_fe
 # 
 grid_search(RandomForestClassifier(), {'max_depth': np.arange(1, 11, 5), 'max_features': ['auto', 'log2']})
 
+#
+# grid_search(SVC(), {'gamma': ['auto', 'scale'], 'C': np.arange(1, 0.2, 0.5)})
+
 # Применение GridSearch
 
 
@@ -175,3 +179,12 @@ y_pred = test_accuracy(DecisionTreeClassifier(max_depth=10, max_features=25))
 
 print('RandomForestClassifier')
 y_pred = test_accuracy(RandomForestClassifier(max_depth=11, max_features=25))
+
+print('SVC')
+svc = SVC(gamma='scale', C=0.5)
+svc.fit(X_train, y_train)
+y_pred = svc.predict(X_test)
+print('Точность на обучающем наборе: {0:0.4f}'.format(svc.score(X_train, y_train)))
+print('Точность на тестовом наборе (Accuracy): {0:0.4f}'.format(svc.score(X_test, y_test)))
+print('Precision: ', format(precision_score(y_test, y_pred, pos_label='>50K')))
+print('Recall: ', format(recall_score(y_test, y_pred, pos_label='>50K')))
