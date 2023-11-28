@@ -5,8 +5,7 @@ import numpy as np
 from deap import base
 from deap import creator
 from deap import tools
-from deap import base, algorithms
-
+from deap import algorithms
 
 #Определим ряд констант
 ONE_MAX_LENGTH = 100    # число генов в хромосоме
@@ -17,8 +16,8 @@ MAX_GENERATIONS = 50    # максимальное количество поко
 
 #Создадим класс FitnessMax, который наследуется от базового класса base.Fitness,
 #который отвечает за операции над значениями приспособленности конкретного индивида.
-
 creator.create("FitnessMax", base.Fitness, weights=(1.0,))
+
 #Создадим класс Individual, который представляет индивида популяции.
 creator.create("Individual", list, fitness=creator.FitnessMax)
 
