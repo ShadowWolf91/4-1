@@ -9,3 +9,7 @@ statsmodels
 pmdarima
 deap
 spacy
+bs4
+googletrans
+nltk
+opencv-python
