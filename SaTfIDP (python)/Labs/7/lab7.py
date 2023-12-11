@@ -109,7 +109,7 @@ plt.tight_layout()
 plt.show()
 
 # Сохранение модели в файл
-joblib.dump(svm_model, 'log_reg_model.pkl')
+joblib.dump(svm_model, 'best_model.pkl')
 
 
 #5
@@ -174,9 +174,9 @@ cleaned_data = [clean_text(text) for text in translated_data]
 
 
 #--------------------------------------------------------------------
-# svc_model = load('best_model.pkl')
+# svc_model = load('log_reg_model.pkl')
 # svc_model = load('rf_model.pkl')
-svc_model = load('log_reg_model.pkl')
+svc_model = load('best_model.pkl')
 
 X = vectorizer.transform(translated_data)
 

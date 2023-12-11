@@ -91,53 +91,6 @@ print('Objects amount (filtered):', len(contours))
 
 plt.tight_layout()
 plt.show()
-# image = cv2.imread('Obj.jpg')
-
-# # Преобразование изображения в оттенки серого
-# gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-
-# # Поиск контуров
-# contours, _ = cv2.findContours(gray, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
-
-# # Копирование изображения для рисования прямоугольников
-# image_with_rectangles = image.copy()
-
-# # Отображение контуров и нахождение прямоугольников
-# for contour in contours:
-#     # Нахождение прямоугольника, в который вписан контур
-#     x, y, w, h = cv2.boundingRect(contour)
-    
-#     # Рисование прямоугольника на изображении
-#     cv2.rectangle(image_with_rectangles, (x, y), (x + w, y + h), (0, 255, 0), 2)
-
-# # Вывод количества предметов
-# num_objects = len(contours)
-# print(f'Количество предметов: {num_objects}')
-
-# # Выделение контуров с наибольшей длиной и площадью
-# max_length_contour = max(contours, key=lambda x: cv2.arcLength(x, True))
-# max_area_contour = max(contours, key=cv2.contourArea)
-
-# plt.subplot(234)
-# plt.title('Max Length Contour')
-# img_max_length_contour = np.zeros_like(image)
-# cv2.drawContours(img_max_length_contour, [max_length_contour], -1, (255, 255, 255), 2)
-# plt.imshow(cv2.cvtColor(img_max_length_contour, cv2.COLOR_BGR2RGB))
-# plt.axis('off')
-
-# plt.subplot(235)
-# plt.title('Max Area Contour')
-# img_max_area_contour = np.zeros_like(image)
-# cv2.drawContours(img_max_area_contour, [max_area_contour], -1, (255, 255, 255), 2)
-# plt.imshow(cv2.cvtColor(img_max_area_contour, cv2.COLOR_BGR2RGB))
-# plt.axis('off')
-
-# print('Objects amount (filtered):', len(contours))
-
-# # Отображение результатов
-# cv2.imshow('Image with Rectangles', image_with_rectangles)
-# cv2.imshow('Image with Longest and Largest Contours', image)
-# cv2.waitKey(0)
 
 # 3
 # Загрузка изображения с прямолинейными объектами

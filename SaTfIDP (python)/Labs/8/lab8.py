@@ -77,9 +77,6 @@ cv2.imshow('Combined Images', combined_image)
 # Ожидание нажатия клавиши для закрытия окон
 cv2.waitKey(0)
 
-# Ожидание нажатия клавиши для закрытия окон
-cv2.waitKey(0)
-
 # 5
 # Загрузка изображения
 image = cv2.imread('example.png', 0)
@@ -94,15 +91,8 @@ eroded_image = cv2.erode(binary_image, None, iterations=1)
 dilated_image = cv2.dilate(binary_image, None, iterations=1)
 
 # Отображение изображений на экран
-# cv2.imshow('Original Image', image)
-# cv2.imshow('Binary Image', binary_image)
-# cv2.imshow('Eroded Image', eroded_image)
-# cv2.imshow('Dilated Image', dilated_image)
 combined_image = np.hstack((image, binary_image, eroded_image, dilated_image))
 # Вывод объединенного изображения на экран
 cv2.imshow('Combined Images', combined_image)
-# Ожидание нажатия клавиши для закрытия окон
-cv2.waitKey(0)
-
 # Ожидание нажатия клавиши для закрытия окон
 cv2.waitKey(0)
