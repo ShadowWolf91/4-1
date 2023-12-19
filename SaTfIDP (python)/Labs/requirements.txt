@@ -13,3 +13,5 @@ bs4
 googletrans
 nltk
 opencv-python
+display
+IPython

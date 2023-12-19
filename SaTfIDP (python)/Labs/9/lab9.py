@@ -35,7 +35,7 @@ filtered_image = cv2.GaussianBlur(imgray, (3, 3), 0)
 
 ret, thresh_img = cv2.threshold(filtered_image, 220, 255, cv2.THRESH_BINARY_INV)
 
-contours, hierarchy = cv2.findContours(thresh_img, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+contours, hierarchy = cv2.findContours(thresh_img, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE) #image, сontours, hierarchy, mode, method, offset
 
 img_contours = np.zeros_like(img)
 cv2.drawContours(img_contours, contours, -1, (255, 255, 255), 1)
@@ -102,7 +102,7 @@ edges = cv2.Canny(gray_img, 50, 150, apertureSize=3)
 gray_img_lines = cv2.cvtColor(img.copy(), cv2.COLOR_BGR2RGB)
 
 # Обнаружение линий с помощью преобразования Хафа
-lines = cv2.HoughLinesP(edges, 1, np.pi/180, 100, minLineLength=70, maxLineGap=250)
+lines = cv2.HoughLinesP(edges, 1, np.pi/180, 100, minLineLength=70, maxLineGap=250) #image, lines, rho, theta, threshold, minLineLength, maxLineGap
 if lines is not None:
     for line in lines:
         x1, y1, x2, y2 = line[0]
@@ -129,8 +129,8 @@ img = cv2.imread('Coffee.jpg')
 img = cv2.medianBlur(img, 5)
 gray_img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
-circles = cv2.HoughCircles(gray_img, cv2.HOUGH_GRADIENT, 1, 35,
-                            param1=250, param2=45, minRadius=30, maxRadius=300)
+circles = cv2.HoughCircles(gray_img, cv2.HOUGH_GRADIENT, 1, 35, #image, circles, method, dp, minDist, param1, param2, minRadius, maxRadius
+                            param1=250, param2=45, minRadius=30, maxRadius=300)#обратное ^ отношение разрешения аккумулятора к разрешению изображения.
 
 if circles is not None:
     circles = np.uint16(np.around(circles))
