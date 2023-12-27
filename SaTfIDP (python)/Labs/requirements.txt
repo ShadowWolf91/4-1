@@ -15,3 +15,5 @@ nltk
 opencv-python
 display
 IPython
+pyautogui
+mediapipe
