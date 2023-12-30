@@ -16,4 +16,4 @@ opencv-python
 display
 IPython
 pyautogui
-mediapipe
+# mediapipe

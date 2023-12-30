@@ -54,11 +54,17 @@ image = cv2.imread('red-chili-peppers.jpg')
 hsv = cv2.cvtColor(image,cv2.COLOR_BGR2HSV)
 
 # Определение диапазона цвета
-lower_red = np.array([0, 20, 20])    # Нижний порог для оттенка красного
-upper_red = np.array([255, 255, 255])   # Верхний порог для оттенка красного
+# Определение диапазона красного цвета в HSV
+lower_red = np.array([0, 100, 100])
+upper_red = np.array([10, 255, 255])
+mask1 = cv2.inRange(hsv, lower_red, upper_red)
 
-# Создание маски для определенного диапазона цвета
-mask = cv2.inRange(hsv, lower_red, upper_red)
+lower_red = np.array([170, 100, 100])
+upper_red = np.array([180, 255, 255])
+mask2 = cv2.inRange(hsv, lower_red, upper_red)
+
+# Объединение масок
+mask = mask1 + mask2
 
 # Применение маски к исходному изображению
 result = cv2.bitwise_and(image, image, mask=mask)

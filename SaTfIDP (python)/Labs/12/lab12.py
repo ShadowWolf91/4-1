@@ -1,7 +1,7 @@
 import cv2
 
 # Загрузка видеофайла
-video_path = 'video.mp4'  # Укажите путь к вашему видео
+video_path = 'Misha.mp4'  # Укажите путь к вашему видео
 cap = cv2.VideoCapture(video_path)
 
 # Создание объекта для вычитания фона
@@ -42,7 +42,7 @@ cv2.destroyAllWindows()
 import numpy as np
 import cv2
 
-cap = cv2.VideoCapture('video1.mp4')
+cap = cv2.VideoCapture('video.mp4')
 
 # params for ShiTomasi corner detection
 feature_params = dict(maxCorners=100, qualityLevel=0.3, minDistance=7, blockSize=7)
